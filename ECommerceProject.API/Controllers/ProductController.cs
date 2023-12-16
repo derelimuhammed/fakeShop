@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
 using ECommerceProject.Application.Features.Queries.ProductQuery.GetAllProduct;
+using ECommerceProject.Application.Features.Queries.ProductQuery.GetProductByPageSize;
 
 namespace ECommerceProject.API.Controllers
 {
