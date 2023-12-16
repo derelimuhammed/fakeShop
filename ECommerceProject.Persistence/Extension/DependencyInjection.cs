@@ -21,6 +21,7 @@ namespace ECommerceProject.Persistence.Extension
             services.AddScoped<IValidatorHelper, ValidatorHelper>();
             services.AddScoped<IEmailCodeHelper,EmailCodeHelper>();
             services.AddScoped<IAppUserService, AppUserService>();
+            services.AddScoped<IAuthService, AuthService>();
             return services;
         }
     }
