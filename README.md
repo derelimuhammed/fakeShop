@@ -114,6 +114,7 @@ Bu controller, kullanıcı yönetimi ile ilgili operasyonları gerçekleştirmek
 
 - Tüm istekler sonucunda dönen cevaplar JSON formatındadır.
 - Kullanıcı kaydı oluşturma ve giriş işlemleri için gerekli parametreler ve veri yapıları belirtilmelidir.
+- Identity'nin parola güvenliği için otomatik olarak hashleme ve tuzlama gibi güvenlik önlemleri alınır.
 - Başarılı işlemlerde `OK` cevabı alınırken, hatalı durumlarda `Bad Request` cevabı döner.
 
 Bu API, kullanıcı kayıt işlemleri ve giriş işlemleri için uygun parametrelerle kullanılmalıdır. Her bir endpoint'in kullanımı ve gereksinimleri önceden belirlenmelidir.
