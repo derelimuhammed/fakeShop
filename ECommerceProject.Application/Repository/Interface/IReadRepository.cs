@@ -17,6 +17,6 @@ namespace ECommerceProject.Application.Repository.Interface
         Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression, bool tracking = true);
         Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, double>> orderby, bool orderDesc = false, bool tracking = true);
         Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression, Expression<Func<T, double>> orderby, bool orderDesc = false, bool tracking = true);
-        
+        public IQueryable<T> GetProductByPageSize(bool tracking = false);
     }
 }

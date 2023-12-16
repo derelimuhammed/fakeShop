@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceProject.Domain.Ultilities.Results;
+using MediatR;
 
-namespace ECommerceProject.Application.Features.Queries.ProductQuery.GetAllProduct
+namespace ECommerceProject.Application.Features.Commands.ProductCom.UpdateProduct
 {
-    public class GetAllProductQueryResponse
+    public class UpdateProductCommandRequest : IRequest<Result>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
