@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using ECommerceProject.Application.Features.Commands.ProductCom.CreateProduct;
-using ECommerceProject.Application.FluentValidators;
-using ECommerceProject.Application.FluentValidators.ProductValidators;
 using ECommerceProject.Application.Helpers;
 using ECommerceProject.Application.Repository.Interface.ProductRepo;
+using ECommerceProject.Application.Validators.FluentValidators.ProductValidators;
 using ECommerceProject.Domain.Concrete;
 using ECommerceProject.Domain.Ultilities.Results;
 using MediatR;

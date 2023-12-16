@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using ECommerceProject.Application.Features.Commands.ProductCom.UpdateProduct;
-using ECommerceProject.Application.FluentValidators.ProductValidators;
+﻿using AutoMapper;
 using ECommerceProject.Application.Helpers;
 using ECommerceProject.Application.Repository.Interface.ProductRepo;
+using ECommerceProject.Application.Validators.FluentValidators.ProductValidators;
 using ECommerceProject.Domain.Ultilities.Results;
 using MediatR;
 

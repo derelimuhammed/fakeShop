@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerceProject.Application.FluentValidators.ProductValidators
+namespace ECommerceProject.Application.Validators.FluentValidators.ProductValidators
 {
     public class CreateProductCommandRequestValidator : AbstractValidator<CreateProductCommandRequest>
     {

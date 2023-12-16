@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using ECommerceProject.Application.Features.Commands.ProductCom.DeleteProduct;
 using FluentValidation;
 
-namespace ECommerceProject.Application.FluentValidators.ProductValidators
+namespace ECommerceProject.Application.Validators.FluentValidators.ProductValidators
 {
-    public class DeleteProductCommandRequestValidator:AbstractValidator<DeleteProductCommandRequest>
+    public class DeleteProductCommandRequestValidator : AbstractValidator<DeleteProductCommandRequest>
     {
         public DeleteProductCommandRequestValidator()
         {
