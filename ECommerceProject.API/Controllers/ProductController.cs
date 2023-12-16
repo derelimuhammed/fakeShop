@@ -38,7 +38,7 @@ namespace ECommerceProject.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByPageSize([FromQuery]GetProductByPageSizeRequest getProductByPageSizeRequest)
+        public async Task<IActionResult> GetByPageSize([FromQuery]GetProductByPageSizeQueryRequest getProductByPageSizeRequest)
         {
             Result response = await _mediator.Send(getProductByPageSizeRequest);
             var jsonResult = JsonConvert.SerializeObject(response);
