@@ -6,7 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerceProject.Application.Features.Commands.ProductCom.CreateProduct;
+using ECommerceProject.Application.Features.Commands.ProductCom.UpdateProduct;
 using ECommerceProject.Application.Features.Queries.ProductQuery.GetAllProduct;
+using ECommerceProject.Application.DTOs;
 
 namespace ECommerceProject.Application.Profiles
 {
@@ -16,6 +18,8 @@ namespace ECommerceProject.Application.Profiles
         {
             CreateMap<CreateProductCommandRequest, Product>();
             CreateMap<Product,GetAllProductQueryResponse>();
+            CreateMap<UpdateProductCommandRequest,Product>();
+            CreateMap<Product, GetProductByPageSizeDto>();
         }
     }
 }

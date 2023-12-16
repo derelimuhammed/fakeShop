@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
+using ECommerceProject.Application.Features.Commands.ProductCom.DeleteProduct;
+using ECommerceProject.Application.Features.Commands.ProductCom.UpdateProduct;
 using ECommerceProject.Application.Features.Queries.ProductQuery.GetAllProduct;
 using ECommerceProject.Application.Features.Queries.ProductQuery.GetProductByPageSize;
 
 namespace ECommerceProject.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -28,7 +30,7 @@ namespace ECommerceProject.API.Controllers
             return Ok(jsonResult);
         }
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
+        public async Task<IActionResult> GetAll()
         {
             Result response = await _mediator.Send(new GetAllProductQueryRequest());
             var jsonResult = JsonConvert.SerializeObject(response);
@@ -36,7 +38,7 @@ namespace ECommerceProject.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByPageSize([FromQuery]GetProductByPageSizeQueryRequest getProductByPageSizeRequest)
+        public async Task<IActionResult> GetByPageSize([FromQuery]GetProductByPageSizeRequest getProductByPageSizeRequest)
         {
             Result response = await _mediator.Send(getProductByPageSizeRequest);
             var jsonResult = JsonConvert.SerializeObject(response);

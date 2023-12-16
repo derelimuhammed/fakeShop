@@ -38,12 +38,12 @@ namespace ECommerceProject.Persistence.Repository
             return Task.FromResult(_context.Database.CreateExecutionStrategy());
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(bool tracking = true)
+        public async Task<IEnumerable<T>> GetAllAsync(bool tracking = false)
         {
             return await GetAllActives(tracking).ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression, bool tracking = true)
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression, bool tracking = false)
         {
             return await GetAllActives(tracking).Where(expression).ToListAsync();
         }
@@ -52,6 +52,13 @@ namespace ECommerceProject.Persistence.Repository
         {
             var values = GetAllActives(tracking);
             return orderDesc ? await values.OrderByDescending(orderby).ToListAsync() : await values.OrderBy(orderby).ToListAsync();
+        }
+        public IQueryable<T> GetProductByPageSize(bool tracking = false)
+        {
+            var query = Table.AsQueryable();
+            if (!tracking)
+                query = query.AsNoTracking();
+            return query;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression, Expression<Func<T, double>> orderBy, bool orderDesc = false, bool tracking = true)
