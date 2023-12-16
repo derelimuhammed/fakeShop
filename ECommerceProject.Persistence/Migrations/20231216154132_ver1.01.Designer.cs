@@ -4,6 +4,7 @@ using ECommerceProject.Persistence.AppContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceProject.Persistence.Migrations
 {
     [DbContext(typeof(ECommerceAPPIDbContext))]
-    partial class ECommerceAPPIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231216154132_ver1.01")]
+    partial class ver101
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
