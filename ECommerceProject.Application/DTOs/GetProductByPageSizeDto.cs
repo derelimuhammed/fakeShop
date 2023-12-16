@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerceProject.Application.Features.Queries.ProductQuery.GetAllProduct
+namespace ECommerceProject.Application.DTOs
 {
-    public class GetAllProductQueryResponse
+    public class GetProductByPageSizeDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
