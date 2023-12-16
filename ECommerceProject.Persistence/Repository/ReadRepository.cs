@@ -54,10 +54,10 @@ namespace ECommerceProject.Persistence.Repository
             return orderDesc ? await values.OrderByDescending(orderby).ToListAsync() : await values.OrderBy(orderby).ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression, Expression<Func<T, double>> orderby, bool orderDesc = false, bool tracking = true)
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression, Expression<Func<T, double>> orderBy, bool orderDesc = false, bool tracking = true)
         {
             var values = GetAllActives(tracking).Where(expression);
-            return orderDesc ? await values.OrderByDescending(orderby).ToListAsync() : await values.OrderBy(orderby).ToListAsync();
+            return orderDesc ? await values.OrderByDescending(orderBy).ToListAsync() : await values.OrderBy(orderBy).ToListAsync();
         }
 
         public async Task<T?> GetAsync(Expression<Func<T, bool>>? expression, bool tracking = true)
@@ -72,7 +72,7 @@ namespace ECommerceProject.Persistence.Repository
         protected IQueryable<T> GetAllActives(bool tracking = true)
         {
             var values = Table.Where(x => x.Status != Status.Deleted);
-            return tracking ? values : values.AsNoTracking(); //True değilse trackingden çık
+            return tracking ? values : values.AsNoTracking(); 
         }
 
     }

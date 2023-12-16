@@ -29,8 +29,33 @@ namespace ECommerceProject.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
         {
-            var response = await _mediator.Send(getAllProductQueryRequest);
-            return Ok(response);
+            Result response = await _mediator.Send(new GetAllProductQueryRequest());
+            var jsonResult = JsonConvert.SerializeObject(response);
+            return Ok(jsonResult);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetByPageSize([FromQuery]GetProductByPageSizeQueryRequest getProductByPageSizeRequest)
+        {
+            Result response = await _mediator.Send(getProductByPageSizeRequest);
+            var jsonResult = JsonConvert.SerializeObject(response);
+            return Ok(jsonResult);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateProductCommandRequest updateProductCommandRequest)
+        {
+            Result response = await _mediator.Send(updateProductCommandRequest);
+            var jsonResult = JsonConvert.SerializeObject(response);
+            return Ok(jsonResult);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(DeleteProductCommandRequest deleteProductCommandRequest)
+        {
+            Result response = await _mediator.Send(deleteProductCommandRequest);
+            var jsonResult = JsonConvert.SerializeObject(response);
+            return Ok(jsonResult);
         }
     }
 }
