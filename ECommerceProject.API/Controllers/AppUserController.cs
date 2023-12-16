@@ -1,4 +1,5 @@
 ﻿using ECommerceProject.Application.Features.Commands.AppUser.AppUserRegister;
+using ECommerceProject.Application.Features.Queries.AppUser.AppUserLogin;
 using ECommerceProject.Domain.Concrete;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -26,6 +27,20 @@ namespace ECommerceProject.API.Controllers
             var result = await _mediator.Send(appUserRegisterCommandRequest);
             var jsonResult= JsonConvert.SerializeObject(result);
             if (result.Succeeded)
+            {
+                return Ok(jsonResult);
+            }
+            else
+            {
+                return BadRequest(jsonResult);
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> Login([FromQuery]AppUsersLoginQueryRequest appUserLoginQueryRequest)
+        {
+            var result = await _mediator.Send(appUserLoginQueryRequest);
+            var jsonResult= JsonConvert.SerializeObject(result);
+            if (result.IsSuccess)
             {
                 return Ok(jsonResult);
             }

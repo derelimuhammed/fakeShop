@@ -9,6 +9,7 @@ using ECommerceProject.Application.Features.Commands.ProductCom.DeleteProduct;
 using ECommerceProject.Application.Features.Commands.ProductCom.UpdateProduct;
 using ECommerceProject.Application.Features.Queries.ProductQuery.GetAllProduct;
 using ECommerceProject.Application.Features.Queries.ProductQuery.GetProductByPageSize;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerceProject.API.Controllers
 {
@@ -30,6 +31,7 @@ namespace ECommerceProject.API.Controllers
             return Ok(jsonResult);
         }
         [HttpGet]
+        [Authorize(AuthenticationSchemes = "Admin")]
         public async Task<IActionResult> GetAll()
         {
             Result response = await _mediator.Send(new GetAllProductQueryRequest());

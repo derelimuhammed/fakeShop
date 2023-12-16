@@ -20,4 +20,8 @@
     <ProjectReference Include="..\ECommerceProject.Domain\ECommerceProject.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Commands\AppUser\AppUserLogin\" />
+  </ItemGroup>
+
 </Project>
