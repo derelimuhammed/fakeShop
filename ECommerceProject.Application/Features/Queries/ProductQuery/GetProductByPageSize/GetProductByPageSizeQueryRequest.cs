@@ -8,7 +8,7 @@ using MediatR;
 
 namespace ECommerceProject.Application.Features.Queries.ProductQuery.GetProductByPageSize
 {
-    public class GetProductByPageSizeRequest: IRequest<Result>
+    public class GetProductByPageSizeQueryRequest: IRequest<Result>
     {
         public int Page { get; set; } = 0;
         public int Size { get; set; } = 5;

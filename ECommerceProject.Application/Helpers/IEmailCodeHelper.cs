@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerceProject.Domain.Concrete
+namespace ECommerceProject.Application.Helpers
 {
-    public class InvoiceFile : Files
+    public interface IEmailCodeHelper
     {
-        public decimal Price { get; set; }
+        public Task<int> GenerateCode();
     }
 }

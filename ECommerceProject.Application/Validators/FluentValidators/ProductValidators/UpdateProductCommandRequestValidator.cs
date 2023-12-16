@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using ECommerceProject.Application.Features.Commands.ProductCom.UpdateProduct;
 using FluentValidation;
 
-namespace ECommerceProject.Application.FluentValidators.ProductValidators
+namespace ECommerceProject.Application.Validators.FluentValidators.ProductValidators
 {
-    public class UpdateProductCommandRequestValidator:AbstractValidator<UpdateProductCommandRequest>
+    public class UpdateProductCommandRequestValidator : AbstractValidator<UpdateProductCommandRequest>
     {
         public UpdateProductCommandRequestValidator()
         {

@@ -1,8 +1,10 @@
-﻿using ECommerceProject.Application.Helpers;
+﻿using ECommerceProject.Application.Abstraction.Services;
+using ECommerceProject.Application.Helpers;
 using ECommerceProject.Application.Repository.Interface.ProductRepo;
 using ECommerceProject.Persistence.AppContext;
 using ECommerceProject.Persistence.Helpers;
 using ECommerceProject.Persistence.Repository.ProductRepo;
+using ECommerceProject.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +19,8 @@ namespace ECommerceProject.Persistence.Extension
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
             services.AddScoped<IValidatorHelper, ValidatorHelper>();
-
+            services.AddScoped<IEmailCodeHelper,EmailCodeHelper>();
+            services.AddScoped<IAppUserService, AppUserService>();
             return services;
         }
     }
