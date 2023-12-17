@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceProject.Application.Abstraction.Services;
 using ECommerceProject.Application.Abstraction.Token;
+using ECommerceProject.Infrastructure.Services.Mail;
 using ECommerceProject.Infrastructure.Services.Token;
-using MailKit;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ECommerceProject.Infrastructure.ServiceRegistrations
@@ -15,6 +16,7 @@ namespace ECommerceProject.Infrastructure.ServiceRegistrations
         public static void AddInfrastructureServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<ITokenHandler, TokenHandler>();
+            serviceCollection.AddScoped<IMailService, MailService>();
         }
     }
 }
