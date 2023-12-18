@@ -9,6 +9,7 @@ using ECommerceProject.Persistence.AppContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,7 @@ builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
 
-builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<ECommerceAPPIDbContext>().AddErrorDescriber<CustomIdentityValidator>();
+builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<ECommerceAPPIDbContext>().AddErrorDescriber<CustomIdentityValidator>().AddDefaultTokenProviders();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

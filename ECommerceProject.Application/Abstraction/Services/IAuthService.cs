@@ -10,5 +10,6 @@ namespace ECommerceProject.Application.Abstraction.Services
     public interface IAuthService
     {
         public Task<Result> LoginAsync(string usernameOrEmail, string password, int accessTokenLifeTime);
+        Task PasswordResetAsync(string email);
     }
 }

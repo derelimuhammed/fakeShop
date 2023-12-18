@@ -1,6 +1,8 @@
-﻿using ECommerceProject.Application.Features.Commands.AppUser.AppUserRegister;
+﻿using ECommerceProject.Application.Features.Commands.AppUser.AppUserPasswordReset;
+using ECommerceProject.Application.Features.Commands.AppUser.AppUserRegister;
 using ECommerceProject.Application.Features.Queries.AppUser.AppUserLogin;
 using ECommerceProject.Domain.Concrete;
+using ECommerceProject.Domain.Ultilities.Results;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -39,6 +41,20 @@ namespace ECommerceProject.API.Controllers
         public async Task<IActionResult> Login([FromQuery]AppUsersLoginQueryRequest appUserLoginQueryRequest)
         {
             var result = await _mediator.Send(appUserLoginQueryRequest);
+            var jsonResult= JsonConvert.SerializeObject(result);
+            if (result.IsSuccess)
+            {
+                return Ok(jsonResult);
+            }
+            else
+            {
+                return BadRequest(jsonResult);
+            }
+        }
+        [HttpPost("password-reset")]
+        public async Task<IActionResult> PasswordReset([FromBody] AppUserPasswordResetCommandRequest passwordResetCommandRequest)
+        {
+            var result = await _mediator.Send(passwordResetCommandRequest);
             var jsonResult= JsonConvert.SerializeObject(result);
             if (result.IsSuccess)
             {

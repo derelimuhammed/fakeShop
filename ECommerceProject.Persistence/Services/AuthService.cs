@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using ECommerceProject.Application.Abstraction.Services;
 using ECommerceProject.Application.Abstraction.Token;
 using ECommerceProject.Application.DTOs;
+using ECommerceProject.Application.Helpers;
 using ECommerceProject.Domain.Concrete;
 using ECommerceProject.Domain.Ultilities.Results;
 using Microsoft.AspNetCore.Identity;
+using MimeKit.Cryptography;
 
 namespace ECommerceProject.Persistence.Services
 {
@@ -17,13 +19,15 @@ namespace ECommerceProject.Persistence.Services
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenHandler _tokenHandler;
+        private readonly IMailService _mailService;
         
 
-        public AuthService(ITokenHandler tokenHandler, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AuthService(ITokenHandler tokenHandler, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMailService mailService)
         {
             _tokenHandler = tokenHandler;
             _userManager = userManager;
             _signInManager = signInManager;
+            _mailService = mailService;
         }
 
         public async Task<Result> LoginAsync(string usernameOrEmail, string password, int accessTokenLifeTime)
@@ -45,5 +49,16 @@ namespace ECommerceProject.Persistence.Services
             return new ErrorResult("Kullanıcı adı veya şifre hatalı!");
         }
 
+        public async Task PasswordResetAsync(string email)
+        {
+            AppUser user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                string resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+                resetToken = resetToken.UrlEncode();
+
+                await _mailService.SendPasswordResetMailAsync(email, user.Id.ToString(), resetToken);
+            }
+        }
     }
 }
